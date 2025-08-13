@@ -149,3 +149,15 @@ footer{margin-top:40px;padding:28px 0;color:var(--muted)}
   display: block;
   margin: 0 auto 12px;        /* centered above the text */
 }
+/* Stack the Welcome hero on tablets/phones */
+@media (max-width: 900px){        /* adjust 900px to taste (e.g., 768px) */
+  .hero{
+    grid-template-columns: 1fr;   /* one column = text first, image below */
+  }
+  #welcome figure{
+    margin-top: 16px;             /* breathing room between text and image */
+  }
+  .hero img{
+    height: auto;                 /* avoid squishing the image when stacked */
+  }
+}
