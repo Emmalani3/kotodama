@@ -25,8 +25,8 @@ header{
 nav{
   display:flex;
   gap:18px;
-  align-items:center;
-  justify-content:space-between
+  align-items: right;
+  justify-content:space-between;
 }
 .logo{display:flex;gap:10px;align-items:center;font-weight:700}
 .logo span{
@@ -35,10 +35,21 @@ nav{
   border-radius:999px;
   background:linear-gradient(135deg,var(--brand),var(--brand-2));
   color:#fff}
+  /* Desktop alignment: keep link group on the right */
+.navlinks{
+  display: flex;
+  gap: 18px;
+  margin-left: auto;   /* <-- this is the key line */
+  margin-right: 0; /* optional, ensures no extra space on the right */ 
+  justify-content: right;
+  border: 2px solid hotpink;
+}
+
 .navlinks a{
   padding:8px 10px;
   border-radius:10px;
-  color: #fff
+  color: #fff;
+  
 }
 .navlinks a:hover{
   background: var(--ring)
@@ -160,4 +171,38 @@ footer{margin-top:40px;padding:28px 0;color:var(--muted)}
   .hero img{
     height: auto;                 /* avoid squishing the image when stacked */
   }
+}
+/* Base: hide hamburger on large screens */
+.hamburger{ display:none; }
+
+/* Small screens: stack hero + turn nav into a dropdown */
+@media (max-width: 700px){
+  /* you already stack the hero; keep or adjust as needed */
+  .hero{ grid-template-columns: 1fr; }
+  #welcome figure{ margin-top: 16px; }
+  .hero img{ height: auto; }
+
+  /* header/menu */
+  header nav{ position: relative; }
+  .hamburger{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:42px; height:42px; border:0; border-radius:10px; cursor:pointer;
+    background:#ffffffcc; box-shadow: var(--shadow);
+  }
+  .hamburger span{
+    display:block; width:22px; height:2px; background:#1d2939; margin:3px 0; border-radius:2px;
+  }
+
+  /* collapse links into a dropdown panel */
+  .navlinks{
+    position:absolute; top:110%; right:0; left:0;
+    margin:0 16px; padding:10px; border-radius:12px;
+    background:#fff; box-shadow:var(--shadow);
+    display:none; flex-direction:column; gap:6px; z-index:100;
+  }
+  .navlinks a{
+    padding:10px 12px; border-radius:10px; background:#eef6f8;
+  }
+  /* visible state toggled by JS */
+  .navlinks.open{ display:flex; }
 }

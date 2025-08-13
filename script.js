@@ -34,7 +34,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   burst();                    // fire once on load
-  setInterval(burst, 5000);   // then every 5 seconds
+  setInterval(burst, 10000);   // then every 10 seconds
 })();
 
 // Confetti on demand for the Welcome section
@@ -64,3 +64,28 @@ window.addEventListener('DOMContentLoaded', () => {
   btn.addEventListener('click', burst);
 })();
 
+// Mobile nav toggle
+(function(){
+  const btn = document.getElementById('nav-toggle');
+  const menu = document.getElementById('site-menu');
+  if (!btn || !menu) return;
+
+  btn.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  // Close menu when a link is clicked or Escape is pressed
+  menu.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => {
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    })
+  );
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
