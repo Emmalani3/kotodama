@@ -188,7 +188,7 @@ footer{margin-top:40px;padding:28px 0;color:var(--muted)}
     display:none; flex-direction:column; gap:6px; z-index:100;
   }
   .navlinks a{
-    padding:10px 12px; border-radius:10px; background:#eef6f8;
+    padding:10px 12px; border-radius:10px; background:linear-gradient(135deg, var(--brand), var(--brand-2);
   }
   /* visible state toggled by JS */
   .navlinks.open{ display:flex; }
