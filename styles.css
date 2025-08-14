@@ -40,9 +40,6 @@ nav{
   display: flex;
   gap: 18px;
   margin-left: auto;   /* <-- this is the key line */
-  margin-right: 0; /* optional, ensures no extra space on the right */ 
-  justify-content: right;
-  border: 2px solid hotpink;
 }
 
 .navlinks a{
